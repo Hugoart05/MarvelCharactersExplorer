@@ -1,4 +1,4 @@
-# Marvel Heroes Explorer
+# Marvel characters Explorer
 
 Uma aplicação para explorar heróis do universo Marvel.
 
