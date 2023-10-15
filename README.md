@@ -12,7 +12,7 @@ Uma aplicação para explorar heróis do universo Marvel.
 
 - React
 - Bootstrap
-- API da Marvel -> <a href="https://developer.marvel.com/"></a>
+- API da Marvel -> https://developer.marvel.com/
 - Outras bibliotecas (se aplicável)
 
 ## Instalação e Uso
