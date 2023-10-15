@@ -1,8 +1,30 @@
-# React + Vite
+# Marvel Heroes Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação para explorar heróis do universo Marvel.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Visualizar uma lista de heróis da Marvel.
+- Ver detalhes de um herói específico.
+- Pesquisar heróis por nome.
+
+## Tecnologias Utilizadas
+
+- React
+- Bootstrap
+- API da Marvel
+- Outras bibliotecas (se aplicável)
+
+## Instalação e Uso
+
+1. Clone o repositório.
+2. Instale as dependências com `npm install`.
+3. Inicie o aplicativo com `npm start`.
+
+## Configuração da API
+
+Para usar este aplicativo, é necessário obter uma chave de API da Marvel. Insira sua chave de API no arquivo `api.js`.
+
+```javascript
+const apiKey = 'SUA_CHAVE_DE_API_AQUI';
+export default apiKey;
