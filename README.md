@@ -24,7 +24,7 @@ Uma aplicação para explorar heróis do universo Marvel.
 
 ## Configuração da API
 
-Para usar este aplicativo, é necessário obter uma chave de API da Marvel. Insira sua chave de API no arquivo `api.js`.
+Para usar este aplicativo, é necessário obter uma chave de API da Marvel. Insira sua chave de API no arquivo `apiSettings.js`.
 
 ```javascript
 const apiKey = 'SUA_CHAVE_DE_API_AQUI';
