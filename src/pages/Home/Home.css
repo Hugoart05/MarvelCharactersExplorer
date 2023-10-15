@@ -1,0 +1,113 @@
+.banner{
+    height: 400px;
+    background-image: url(https://th.bing.com/th/id/R.1430c40cab34fe1adb51e5227e0d8cb8?rik=eRlhkAHOLMIWTQ&riu=http%3a%2f%2fwww.wallpaperup.com%2fuploads%2fwallpapers%2f2014%2f04%2f08%2f326808%2fbc9eede125dfabdda7f6649e28c08312.jpg&ehk=qVkbOcPNSfLSjcBE%2bsh0lxjl31SkPjzAKygC5EUDf10%3d&risl=&pid=ImgRaw&r=0);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 120px;
+}
+
+
+.content-serach{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    >h1{
+        text-align: center;
+        color: white;
+    }
+    
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-text{
+    width: 280px;
+    padding-left: 20px!important;
+    border-radius: 8px;
+    height: 45px;
+}
+
+.social-dev{
+    gap: 10px;
+}
+.social-dev i{
+    font-size: 25px;
+    color: white;
+    transition: 0.3s ease;
+    &:hover{
+        color: rgb(63, 63, 250);
+    }
+}
+
+.img{
+    width: 100%;
+    height: 180px;
+    background-image: 
+        url(https://th.bing.com/th/id/R.97a23e3e5b40c2ca34ab7a75b972e994?rik=0bSREAwa%2b%2fKVKA&riu=http%3a%2f%2f1.bp.blogspot.com%2f_9rMUq-F_GCQ%2fS7nfGz3OkcI%2fAAAAAAAAJWk%2fLhPpkOCj_H0%2fw1200-h630-p-k-no-nu%2fwallpaper_06.jpg&ehk=33%2ftWu7A1xfAviruAgBHBwJcY3eBfMVl%2f4T39Ew0tYE%3d&risl=&pid=ImgRaw&r=0);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    overflow: hidden;
+    padding-bottom: 20px;
+    
+}
+.img img{
+    transition: 0.3s ease;
+    &:hover{
+        transform: scaleX(1.2) scaleY(1.2);
+    }
+}
+
+.cardheroe{
+    max-height: 380px;
+    background-color: rgb(18, 18, 24);
+    padding: 0;
+    border-radius: 3px;
+    margin: 2px;
+    transition: 0.3s ease;
+    &:hover{
+        transform: scaleX(1.02) scaleY(1.04);
+    }
+}
+
+
+
+.img span{
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.content{
+    padding: 20px;
+   
+}
+
+.content span{
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.content .desc{
+    color: white;
+    font-size: 14px;
+    font-weight: 100;
+    opacity: .7;
+    
+}   
+
+.content a{
+    color: white;
+}
