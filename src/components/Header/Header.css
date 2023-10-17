@@ -5,6 +5,7 @@
     transition: 0.3s ease;
     font-weight: 700;
     &:hover{
-        color: blue;
+        color: rgb(248, 55, 55);
     }
+    
 }

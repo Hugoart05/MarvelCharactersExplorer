@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 .banner{
     height: 400px;
     background-image: url(https://th.bing.com/th/id/R.1430c40cab34fe1adb51e5227e0d8cb8?rik=eRlhkAHOLMIWTQ&riu=http%3a%2f%2fwww.wallpaperup.com%2fuploads%2fwallpapers%2f2014%2f04%2f08%2f326808%2fbc9eede125dfabdda7f6649e28c08312.jpg&ehk=qVkbOcPNSfLSjcBE%2bsh0lxjl31SkPjzAKygC5EUDf10%3d&risl=&pid=ImgRaw&r=0);
@@ -18,7 +22,6 @@
         text-align: center;
         color: white;
     }
-    
 }
 
 .search{
@@ -110,4 +113,9 @@
 
 .content a{
     color: white;
+}
+
+
+.nav-link{
+    cursor: pointer;
 }

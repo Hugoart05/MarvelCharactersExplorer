@@ -1,5 +1,6 @@
 import './Home.css'
 import api from '../../api.js'
+import Modal from '../../components/Modal'
 
 import MD5 from 'crypto-js/md5'
 import { useEffect, useState } from 'react'
@@ -7,9 +8,13 @@ import { useEffect, useState } from 'react'
 const Home = ()=>{
     const [heroes, setHeroes] =  useState([])
     const [offset, setOffset] = useState(0)
-    
+    const [hero, setHero] = useState('')
+    const [modal, setModal] = useState([])
+
+   
+   console.log(heroes)
     async function FetchData(){
-        const response = await api.get(`/characters?offset=${offset}&limit=22`)
+        const response = await api.get(`/characters?offset=${offset}&limit=12`)
         setHeroes(response.data.data.results)
     }
 
@@ -17,9 +22,23 @@ const Home = ()=>{
         FetchData()
     }, [])
 
+    const handleChange = async (e) =>{
+        e.preventDefault()
+        const {hero} = e.target
+        setHero(hero)
+
+        try{
+            const changeData = await api.get(`/characters?nameStartsWith=${hero}`)
+            console.log(changeData)
+        }
+        catch(error){
+            console.error(error)
+        }
+    }
+    
     const handleClick = async ()=>{
-        const newOffset = offset + 22; 
-        const response = await api.get(`/characters?offset=${newOffset}&limit=22`); 
+        const newOffset = offset + 12; 
+        const response = await api.get(`/characters?offset=${newOffset}&limit=12`); 
 
         const modifiedHeroes = response.data.data.results.map(hero => {
             return {
@@ -31,15 +50,34 @@ const Home = ()=>{
         setHeroes([...heroes, ...modifiedHeroes]);
         setOffset(newOffset); 
     }
+
+    const Details = async (e) =>{
+        console.log(e)
+        setModal('')
+        const response = await api.get(`/characters/1011030`)
+        setModal(response.data.data.results)
+    }
     
 
     return(
         <>
+            
+        
+        <Modal  data={modal[0]}/>
            <section className="banner">
                 <div className='container d-flex justify-content-center flex-column align-items content-serach' >
                     <h1 >Encontre seu herói <br/>favorito e saiba tudo sobre ele</h1>
                     <form className='search mt-2'>
-                        <input type="text" className="form-control search-text" id="floatingInputValue" placeholder='Ex: iron man'/>
+                        <input 
+                            type="text" 
+                            className="form-control search-text" 
+                            id="floatingInputValue" 
+                            placeholder='Ex: iron man' 
+                            value={hero} 
+                            onChange={handleChange}
+                            onSubmit={(e)=>e.preventDefault()}
+                        />
+
                     </form>
                     <div className='container d-flex justify-content-center mt-3 social-dev'>
                         <a href="#"><i className='bi bi-github'></i></a>
@@ -51,7 +89,7 @@ const Home = ()=>{
                 <div className='container '>
                     <div className="row  p-3 d-flex flex-wrap d-flex justify-content-center   ">
                         {heroes.length > 0 ? (
-                            heroes.map(({id,name,thumbnail,description})=>{
+                            heroes.map(({id,name,thumbnail,description},index)=>{
                                 const imageurl = `${thumbnail.path}.${thumbnail.extension}`
                                 const notFound = 'image_not_available.jpg'
 
@@ -73,7 +111,11 @@ const Home = ()=>{
                                                 <p className="desc">
                                                     {limitCharacters(50)}
                                                 </p>
-                                                <a href="">ler mais</a>
+                                                
+                                                <p className="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={()=>{Details(id)}} >
+                                                    Ler mais {id}
+                                                    <input type="hidden" value={id} name='heroId' />
+                                                </p>
                                             </div>
                                     </div>
                                     )
@@ -94,6 +136,7 @@ const Home = ()=>{
                     <p>&copy; 2023 Hugo Silva</p>
                 </div>
             </footer>
+            
         </>
     )
 }
