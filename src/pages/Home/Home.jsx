@@ -12,9 +12,9 @@ const Home = ()=>{
     const [modal, setModal] = useState([])
 
    
-   console.log(heroes)
+   console.log( modal)
     async function FetchData(){
-        const response = await api.get(`/characters?offset=${offset}&limit=12`)
+        const response = await api.get(`/characters?offset=${offset}&limit=9`)
         setHeroes(response.data.data.results)
     }
 
@@ -51,22 +51,18 @@ const Home = ()=>{
         setOffset(newOffset); 
     }
 
-    const Details = async (e) =>{
-        console.log(e)
-        setModal('')
-        const response = await api.get(`/characters/1011030`)
-        setModal(response.data.data.results)
+    const Details = async (id) =>{
+        const perfilDoHerói = heroes.find(x => x.id == id)
+        setModal(perfilDoHerói)
     }
     
-
     return(
         <>
             
-        
-        <Modal  data={modal[0]}/>
-           <section className="banner">
+            <Modal  data={modal}/>
+            <section className="banner">
                 <div className='container d-flex justify-content-center flex-column align-items content-serach' >
-                    <h1 >Encontre seu herói <br/>favorito e saiba tudo sobre ele</h1>
+                    <h1 >Saiba mais <br/>sobre seu personagem favorito</h1>
                     <form className='search mt-2'>
                         <input 
                             type="text" 
@@ -93,11 +89,11 @@ const Home = ()=>{
                                 const imageurl = `${thumbnail.path}.${thumbnail.extension}`
                                 const notFound = 'image_not_available.jpg'
 
-                                const limitCharacters = (maxChars) =>{
-                                    if(description.length > maxChars){
+                                const limitCharacters = (text, maxChars) =>{
+                                    if(text.length > maxChars){
                                         return description.slice(0, maxChars) + '...';
                                     }
-                                    return description
+                                    return text
                                 }
 
                                 if(!imageurl.includes(notFound)){
@@ -107,9 +103,9 @@ const Home = ()=>{
                                                 <span></span>
                                             </div>
                                             <div className="content">
-                                                <span className='title'>{name}</span>
+                                                <span className='title'>{limitCharacters(name, 18)}</span>
                                                 <p className="desc">
-                                                    {limitCharacters(50)}
+                                                    {limitCharacters(description,50)}
                                                 </p>
                                                 
                                                 <p className="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={()=>{Details(id)}} >
@@ -136,7 +132,6 @@ const Home = ()=>{
                     <p>&copy; 2023 Hugo Silva</p>
                 </div>
             </footer>
-            
         </>
     )
 }
