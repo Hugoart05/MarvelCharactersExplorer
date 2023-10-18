@@ -11,8 +11,6 @@ const Home = ()=>{
     const [hero, setHero] = useState('')
     const [modal, setModal] = useState([])
 
-   
-   console.log( modal)
     async function FetchData(){
         const response = await api.get(`/characters?offset=${offset}&limit=9`)
         setHeroes(response.data.data.results)
@@ -58,8 +56,8 @@ const Home = ()=>{
     
     return(
         <>
-            
             <Modal  data={modal}/>
+            
             <section className="banner">
                 <div className='container d-flex justify-content-center flex-column align-items content-serach' >
                     <h1 >Saiba mais <br/>sobre seu personagem favorito</h1>
@@ -73,22 +71,20 @@ const Home = ()=>{
                             onChange={handleChange}
                             onSubmit={(e)=>e.preventDefault()}
                         />
-
                     </form>
                     <div className='container d-flex justify-content-center mt-3 social-dev'>
                         <a href="#"><i className='bi bi-github'></i></a>
                         <a href="#"><i className='bi bi-linkedin'></i></a>
                     </div>
                 </div>
-           </section>
-           <main className='bg-dark pt-4 pb-4'>
+            </section>
+            <main className='bg-dark pt-4 pb-4'>
                 <div className='container '>
                     <div className="row  p-3 d-flex flex-wrap d-flex justify-content-center   ">
                         {heroes.length > 0 ? (
                             heroes.map(({id,name,thumbnail,description},index)=>{
                                 const imageurl = `${thumbnail.path}.${thumbnail.extension}`
                                 const notFound = 'image_not_available.jpg'
-
                                 const limitCharacters = (text, maxChars) =>{
                                     if(text.length > maxChars){
                                         return description.slice(0, maxChars) + '...';
@@ -111,14 +107,40 @@ const Home = ()=>{
                                                 <p className="nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={()=>{Details(id)}} >
                                                     Ler mais {id}
                                                     <input type="hidden" value={id} name='heroId' />
+                                                    
                                                 </p>
                                             </div>
-                                    </div>
+                                        </div>
                                     )
                                 }
                             })
                         ) : (
-                            <p>nao tem</p>
+                            <div className="container d-flex justify-content-center">
+                                <div class="spinner-grow text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                    <div class="spinner-grow text-success" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-danger" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-warning" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-info" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-light" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="spinner-grow text-dark" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
                         )}
                     </div>
                     
@@ -128,9 +150,7 @@ const Home = ()=>{
                 <span style={{color:'white', }}>Ver mais</span>
             </div>
             <footer className="bg-danger text-white text-center py-3">
-                <div className="container">
-                    <p>&copy; 2023 Hugo Silva</p>
-                </div>
+                
             </footer>
         </>
     )
