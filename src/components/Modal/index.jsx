@@ -2,9 +2,6 @@ import './Modal.css'
 import SliderComponent from '../SliderComponent'
 
  const Modal = ({data}) =>{
-    
-    
-
     return (
         <>
             <div className="modal fade  " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
