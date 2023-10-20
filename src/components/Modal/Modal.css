@@ -5,6 +5,7 @@
     overflow-y: auto;
     border: 1px solid white;
     max-height: 700px;
+
 }
 
 .modal-img-perfil{
@@ -39,7 +40,21 @@
 .desc{
     width: 100%;
     color: white;
-    padding: 20px;
+    padding: 0 20px;
     margin-top: 8px;
     border-top: 1px solid rgba(128, 128, 128, 0.281);
+}
+
+.events{
+    width: 100%;
+    padding:0 20px;
+    margin: 0px;
+}
+.hq-title{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.events-item{
+
 }

@@ -2,7 +2,7 @@ import './Modal.css'
 import SliderComponent from '../SliderComponent'
 
  const Modal = ({data}) =>{
-
+    
     
 
     return (
@@ -15,6 +15,7 @@ import SliderComponent from '../SliderComponent'
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         {data.id ? (
+                            
                             <div className="modal-body d-flex flex-column align-items-center">
                                 <div className='modal-img-perfil '>
                                     <img className="mb-3"src={`${data.thumbnail.path}.${data.thumbnail.extension}`} alt="perfil imagem " />
@@ -26,12 +27,21 @@ import SliderComponent from '../SliderComponent'
                                 </div>
                             </div>
                             <div className='desc'>
+                                <h5>Descrição</h5>
                                 <p>{data.description != '' ? data.description : 'Historia desconhecida'}</p>
                             </div>
-                            <div style={{width:'100%', height:'auto'}}>
-                               
+                            <div className='events'>
+                                <h6>Aparece em {data.comics.available} HQs</h6>
+                                {data.comics.items.map((item)=>(
+                                    <div className='events-item'>
+                                        <p className='hq-title'>{item.name}</p>
+                                        <div className='d-flex'>
+                                        <p className='me-1'>Url: </p><a href={item.resourceURI}>{item.resourceURI}</a>
+                                        </div>
+                                    </div>
+                                
+                                ))}
                             </div>
-
                         </div>
                         ):(<p style={{color:'white'}}>Carregando...</p>)}
                     </div>

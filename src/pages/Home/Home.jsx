@@ -1,6 +1,7 @@
 import './Home.css'
 import api from '../../api.js'
 import Modal from '../../components/Modal'
+import Loading from '../../components/Loading'
 
 import MD5 from 'crypto-js/md5'
 import { useEffect, useState } from 'react'
@@ -10,6 +11,9 @@ const Home = ()=>{
     const [offset, setOffset] = useState(0)
     const [hero, setHero] = useState('')
     const [modal, setModal] = useState([])
+
+    console.log(modal)
+
 
     async function FetchData(){
         const response = await api.get(`/characters?offset=${offset}&limit=9`)
@@ -115,32 +119,7 @@ const Home = ()=>{
                                 }
                             })
                         ) : (
-                            <div className="container d-flex justify-content-center">
-                                <div class="spinner-grow text-primary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-secondary" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                    <div class="spinner-grow text-success" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-danger" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-warning" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-info" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-light" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <div class="spinner-grow text-dark" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
+                           <Loading/>
                         )}
                     </div>
                     
