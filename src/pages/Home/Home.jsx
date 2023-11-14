@@ -7,6 +7,15 @@ import MD5 from 'crypto-js/md5'
 import { useEffect, useState } from 'react'
 
 const Home = ()=>{
+
+    //refatorando//
+     const [data, setData] =  useState({
+        heroes:[],
+        offset: 0,
+        hero:'',
+        modal:[]
+    })
+    //#//
     const [heroes, setHeroes] =  useState([])
     const [offset, setOffset] = useState(0)
     const [hero, setHero] = useState('')
